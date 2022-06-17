@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vaidinimai{% endblock %}
+
+{% block navigation %}
+<nav class="navigation">
+            <h1 class="web-name">Filmų pardavimų svetainė</h1>
+            <ul class="items">
+                <li class="item"><a class="link-item" href={{ url('movies', schemeRelative = false) }}>Filmų sąrašas</a></li>
+                <li class="item"><a class="link-item" href={{ url('buyers', schemeRelative = false) }}>Pirkėjai</a></li>
+                <li class="item"><a class="link-item" href={{ url('orders', schemeRelative = false) }}>Užsakymai</a></li>
+                <li class="item"><a class="link-item" href={{ url('actors', schemeRelative = false) }}>Aktoriai</a></li>
+                <li class="item"><a class="link-item selected" href={{ url('performances', schemeRelative = false) }}>Vaidinimai</a></li>
+                <li class="item"><a class="link-item" href={{ url('moviesList', schemeRelative = false) }}>Filmai</a></li>
+                <li class="item"><a class="link-item" href={{ url('about-us', schemeRelative = false) }}>Apie mus</a></li>
+                <li class="item"><a class="link-item" href={{ path('contacts', relative = false) }}>Kontaktai</a></li>
+            </ul>
+            <div class="burger">
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+            </div>
+            <a href = {{ url('insertPerformance', schemeRelative = false) }} class='button button-insert'>Pridėti naują vaidinimą</a>
+</nav>
+{% endblock %} 
+{% block body %}
+
+        <h1 class='title'>Vaidinimų sąrašas</h1>
+        <table>
+            <thead>
+                <tr>
+                    <td>Aktoriaus vardas</td>
+                    <td>Aktoriaus pavardė</td>
+                    <td>Nusifilmuota filme</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            <thead>
+
+            <tbody>
+
+                {% for vaidinimas in vaidinimai %}
+                    <tr>
+                        <td>{{vaidinimas.vardas}}</td>
+                        <td>{{vaidinimas.pavarde}}</td>
+                        <td>{{vaidinimas.pavadinimas}}</td>
+                        <td><a href = '#' class='button button-alert'>Redaguoti</a></td>
+                        <td><a href = '#' class='button button-danger'>Ištrinti</a></td>
+                    </tr>
+                {% endfor %}
+
+            <tbody>
+
+        </table>
+        {{ knp_pagination_render(vaidinimai) }}
+{% endblock %}
+
+
+{% block javascripts %} 
+<script src={{asset('js/scipt-style.js')}}></script> 
+{% endblock %} 

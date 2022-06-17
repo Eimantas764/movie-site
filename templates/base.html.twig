@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href={{asset('images/icon.png')}}>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href={{asset('css/new-style.css')}}>
+        <link rel="stylesheet" href={{asset('css/style.css')}}>
+
+        <title>{% block title %}{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+    {% block navigation %}{% endblock %}
+        <div class ='container'>
+            <main>
+                 {% block body %}{% endblock %}
+            </main>
+        </div>
+        {# <footer>
+        </footer> #}
+
+        {% block javascripts %}{% endblock %}
+
+        <script src={{asset('js/date-script.js')}}> </script>
+        <script src={{asset('js/img-lightness-script.js')}}> </script>
+ 
+    </body>
+</html>

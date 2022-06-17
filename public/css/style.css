@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&display=swap');
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    text-decoration: none  !important;
+    list-style-type: none;
+}
+
+html, body {min-height: 100%;}
+
+html > body{
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    font-size: 16px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/*-------------GENERAL-----------------*/
+.center{
+    text-align: center;
+}
+
+main{
+    margin-top: 100px;
+    font-weight: bold;
+}
+
+main > p{
+    font-size: 20px;
+    line-height: 30px;
+}
+
+footer{
+    position: absolute;
+    padding-top: 40px;
+    width: 100%;
+    background: #000;
+    bottom: 20px;
+}
+
+.selected{
+    color: red !important;
+}
+
+.title{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 70px;
+    color: red;
+}
+
+main .cards{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+main .card{
+    width: fit-content;
+    padding: 10px 20px;
+    color: #dddddd  !important;
+    transition: 1s ease-in-out;
+    font-weight: bold;
+    background: rgba(0,0,0,0);
+    line-height: 10px;
+    border: none;
+}
+
+
+main .card img{
+    border-radius: 15px;
+    width: 200px;
+    height: 300px;
+}
+
+main .card:hover{
+    transition: 1s ease-in-out;
+    background: rgb(114, 114, 106, 0.4);
+    cursor: pointer;
+    color: red !important;
+}
+
+main .card:active{
+    transition: 1s ease-in-out;
+    color: rgba(223, 223, 7, 0.911) !important;
+    cursor: pointer;
+}
+
+main .about-movie{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.movie-item{
+    transition: 200ms ease-in-out;
+}
+
+.movie-item:hover{
+    border-bottom: 4px solid white;
+    transition: 200ms ease-in-out;
+}
+
+/*--------------About single movie ------------------------*/
+
+.pagination{
+    justify-content: center;
+    margin: 20px;
+}
+
+.img-div, .movie-info{
+    padding: 30px;
+}
+
+.movie-info{
+    margin-top: 30px;
+    font-weight: 700;
+    font-size: 25px;
+    text-align: center;
+    line-height: 40px;
+}
+
+.img-div .movie-image{
+    display: inline-block;
+    text-align: center;
+    border-radius: 50px;
+    width: 350px;
+    height: 500px;
+    
+}
+
+.about-movie .movie-info ul li{
+    list-style-type: square;
+}
+
+.button-purchase{
+    background: rgb(48, 194, 48);
+    width: 200px;
+    color: #f2f2f2;
+}
+
+.button-insert{
+    position: inherit;
+    top: 170px;
+    right: 100px;
+    z-index: -5;
+}
+
+.white{
+    color: white;
+}
+
+label{
+    color: white;
+}
+
+/*--------------Media queries ------------------------*/
+
+@media (max-width: 1100px)
+{
+    main .cards{
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+    }
+}
+
+@media (max-width: 960px)
+{
+    main .cards{
+        grid-template-columns: repeat(1, 1fr);
+        justify-items: center;
+        align-items: center;
+    }
+
+    main .card{
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+    }
+    
+    
+    main .card img{
+        border-radius: 15px;
+        display: block;
+        text-align: center;
+    }
+
+    main .movie-content{
+        text-align: center;
+        width: 230px;
+        padding: 10px;
+    }
+}

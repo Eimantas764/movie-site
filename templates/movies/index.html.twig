@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Filmų sąrašas {% endblock  %} 
+
+{% block navigation %}
+<nav class="navigation">
+            <h1 class="web-name">Filmų pardavimų svetainė</h1>
+            <ul class="items">
+                <li class="item"><a class="link-item selected" href={{ url('movies', schemeRelative = false) }}>Filmų sąrašas</a></li>
+                <li class="item"><a class="link-item" href={{ url('buyers', schemeRelative = false) }}>Pirkėjai</a></li>
+                <li class="item"><a class="link-item" href={{ url('orders', schemeRelative = false) }}>Užsakymai</a></li>
+                <li class="item"><a class="link-item" href={{ url('actors', schemeRelative = false) }}>Aktoriai</a></li>
+                <li class="item"><a class="link-item" href={{ url('performances', schemeRelative = false) }}>Vaidinimai</a></li>
+                <li class="item"><a class="link-item" href={{ url('moviesList', schemeRelative = false) }}>Filmai</a></li>
+                <li class="item"><a class="link-item" href={{ url('about-us', schemeRelative = false) }}>Apie mus</a></li>
+                <li class="item"><a class="link-item" href={{ path('contacts', relative = false) }}>Kontaktai</a></li>
+            </ul>
+            <div class="burger">
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+            </div>
+</nav>
+{% endblock %} 
+
+{% block body %}
+        <h1 class='title'>Filmų sąrašas</h1>
+        <div class = 'cards'>
+            {% for filmas in filmai %}
+                <a href={{ url('show-movie', {'id': filmas.id}, schemeRelative = false) }}>
+                    <div class='card'>
+                        <div>
+                            <img src="{{filmas.paveikslelis}}">
+                        </div>
+                        <div class='movie-content'>
+                            <h1 class='center'>{{filmas.pavadinimas}}</h1>
+                            <p class='center'>imdb: {{filmas.imdb}}</p>
+                            <p class='center'>metai: {{filmas.metai}}</p>
+                            <p class='center'>kaina: {{filmas.kaina}}$</p>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+        {{ knp_pagination_render(filmai) }}
+
+{% endblock %}
+
+{% block javascripts %} 
+<script src={{asset('js/scipt-style.js')}}></script> 
+{% endblock %} 

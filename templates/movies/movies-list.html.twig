@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Filmų sąrašas{% endblock %}
+
+{% block navigation %}
+<nav class="navigation">
+            <h1 class="web-name">Filmų pardavimų svetainė</h1>
+            <ul class="items">
+                <li class="item"><a class="link-item" href={{ url('movies', schemeRelative = false) }}>Filmų sąrašas</a></li>
+                <li class="item"><a class="link-item" href={{ url('buyers', schemeRelative = false) }}>Pirkėjai</a></li>
+                <li class="item"><a class="link-item" href={{ url('orders', schemeRelative = false) }}>Užsakymai</a></li>
+                <li class="item"><a class="link-item" href={{ url('actors', schemeRelative = false) }}>Aktoriai</a></li>
+                <li class="item"><a class="link-item" href={{ url('performances', schemeRelative = false) }}>Vaidinimai</a></li>
+                <li class="item"><a class="link-item selected" href={{ url('moviesList', schemeRelative = false) }}>Filmai</a></li>
+                <li class="item"><a class="link-item" href={{ url('about-us', schemeRelative = false) }}>Apie mus</a></li>
+                <li class="item"><a class="link-item" href={{ path('contacts', relative = false) }}>Kontaktai</a></li>
+            </ul>
+            <div class="burger">
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+            </div>
+            <a href = {{ url('insertMovie', schemeRelative = false) }} class='button button-insert'>Pridėti naują filmą</a>
+</nav>
+{% endblock %} 
+
+{% block body %}
+
+        <h1 class='title'>Filmų sąrašas</h1>
+        <table>
+            <thead>
+                <tr>
+                    <td>Pavadinimas</td>
+                    <td>Metai</td>
+                    <td>Įvertinimas </td>
+                    <td>Kaina</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            <thead>
+
+            <tbody>
+
+                {% for filmas in filmai %}
+                    <tr>
+                        <td>{{filmas.pavadinimas}}</td>
+                        <td>{{filmas.metai}}</td>
+                        <td class='number'>{{filmas.imdb}}</td>
+                        <td class='number'>{{filmas.kaina}}</td>
+                        <td><a href = {{ url('editMovie', {'id': filmas.id}, schemeRelative = false) }} class='button button-alert'>Redaguoti</a></td>
+                        <td><a href = {{ url('deleteMovie', {'id': filmas.id}, schemeRelative = false) }} class='button button-danger'>Ištrinti</a></td>
+                    </tr>
+                {% endfor %}
+
+            <tbody>
+
+        </table>
+
+        {{ knp_pagination_render(filmai) }}
+
+{% endblock %}
+
+{% block javascripts %} 
+<script src={{asset('js/scipt-style.js')}}></script> 
+{% endblock %} 

@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Aktoriai{% endblock %}
+
+{% block navigation %}
+<nav class="navigation">
+            <h1 class="web-name">Filmų pardavimų svetainė</h1>
+            <ul class="items">
+                <li class="item"><a class="link-item" href={{ url('movies', schemeRelative = false) }}>Filmų sąrašas</a></li>
+                <li class="item"><a class="link-item" href={{ url('buyers', schemeRelative = false) }}>Pirkėjai</a></li>
+                <li class="item"><a class="link-item" href={{ url('orders', schemeRelative = false) }}>Užsakymai</a></li>
+                <li class="item"><a class="link-item selected" href={{ url('actors', schemeRelative = false) }}>Aktoriai</a></li>
+                <li class="item"><a class="link-item" href={{ url('performances', schemeRelative = false) }}>Vaidinimai</a></li>
+                <li class="item"><a class="link-item" href={{ url('moviesList', schemeRelative = false) }}>Filmai</a></li>
+                <li class="item"><a class="link-item" href={{ url('about-us', schemeRelative = false) }}>Apie mus</a></li>
+                <li class="item"><a class="link-item" href={{ path('contacts', relative = false) }}>Kontaktai</a></li>
+            </ul>
+            <div class="burger">
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+            </div>
+            <a href = {{ url('insertActor', schemeRelative = false) }} class='button button-insert'>Pridėti naują aktorių</a>
+</nav>
+{% endblock %} 
+{% block body %}
+
+        <h1 class='title'>Aktorių sąrašas</h1>
+        <table>
+
+            <thead>
+                <tr>
+                    <td>Vardas</td>
+                    <td>Pavardė</td>
+                    <td>Gimimo data</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for aktorius in aktoriai %}
+                <tr>
+                    <td>{{aktorius.vardas}}</td>
+                    <td>{{aktorius.pavarde}}</td>
+                    <td class='number'>{{aktorius.gimData|date('Y-m-d')}}</td>
+                    <td><a href = {{ url('editActor', {'id': aktorius.idAktorius}, schemeRelative = false) }} class='button button-alert'>Redaguoti</a></td>
+                    <td><a href = {{ url('deleteActor', {'id': aktorius.idAktorius}, schemeRelative = false) }} class='button button-danger'>Ištrinti</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+
+        {{ knp_pagination_render(aktoriai) }}
+
+{% endblock %}
+
+{% block javascripts %} 
+<script src={{asset('js/scipt-style.js')}}></script> 
+{% endblock %} 

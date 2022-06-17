@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Kontaktai {% endblock  %} 
+
+{% block navigation %}
+<nav class="navigation">
+            <h1 class="web-name">Filmų pardavimų svetainė</h1>
+            <ul class="items">
+                <li class="item"><a class="link-item" href={{ url('movies', schemeRelative = false) }}>Filmų sąrašas</a></li>
+                <li class="item"><a class="link-item" href={{ url('buyers', schemeRelative = false) }}>Pirkėjai</a></li>
+                <li class="item"><a class="link-item" href={{ url('orders', schemeRelative = false) }}>Užsakymai</a></li>
+                <li class="item"><a class="link-item" href={{ url('actors', schemeRelative = false) }}>Aktoriai</a></li>
+                <li class="item"><a class="link-item" href={{ url('performances', schemeRelative = false) }}>Vaidinimai</a></li>
+                <li class="item"><a class="link-item" href={{ url('moviesList', schemeRelative = false) }}>Filmai</a></li>
+                <li class="item"><a class="link-item" href={{ url('about-us', schemeRelative = false) }}>Apie mus</a></li>
+                <li class="item"><a class="link-item selected" href={{ path('contacts', relative = false) }}>Kontaktai</a></li>
+            </ul>
+            <div class="burger">
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+            </div>
+</nav>
+{% endblock %} 
+
+{% block body %}
+         <h1 class='title'>Kontaktai</h1>
+                <p>Iškilus papildomiems klausimamas galite susisiekti su mumis rašydami į eeeeeeee@gmail.com elektroninį paštą arba skambinti telefonu 123456798.
+                </p>
+{% endblock %}
+
+{% block javascripts %} 
+<script src={{asset('js/scipt-style.js')}}></script> 
+{% endblock %} 
